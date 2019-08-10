@@ -39,5 +39,10 @@ namespace AcceleroRecorder.Views
                 await RootPage.NavigateFromMenu(id);
             };
         }
+
+        private void ListViewMenu_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+
+        }
     }
 }

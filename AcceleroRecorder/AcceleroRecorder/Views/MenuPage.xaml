@@ -8,7 +8,8 @@
              Title="e">
     <StackLayout VerticalOptions="FillAndExpand">
         <ListView x:Name="ListViewMenu"
-                    HasUnevenRows="True">
+                    HasUnevenRows="True"
+                    ItemSelected="ListViewMenu_ItemSelected">
             <d:ListView.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Item 1</x:String>
@@ -16,6 +17,7 @@
                 </x:Array>
             </d:ListView.ItemsSource>
             <ListView.ItemTemplate>
+                
                 <DataTemplate>
                     <ViewCell>
                         <Grid Padding="10">
