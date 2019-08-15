@@ -13,8 +13,13 @@
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
             <!-- Monitoring zone -->
-            <Grid Grid.Row="1" BackgroundColor="White">
+            <Grid Grid.Row="1" Grid.Column="1" BackgroundColor="White">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="20"/>
@@ -50,7 +55,7 @@
                 </Grid>
             </Grid>
             <!-- Control zone -->
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="2"  Grid.Column="1">
                 <Frame CornerRadius="100" 
                        HorizontalOptions="Center" 
                        VerticalOptions="Center"
