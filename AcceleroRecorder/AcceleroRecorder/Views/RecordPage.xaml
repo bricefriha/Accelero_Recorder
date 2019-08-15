@@ -7,10 +7,29 @@
              x:Class="AcceleroRecorder.Views.RecordPage"
              Title="{Binding Title}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="{Binding Title}"
-                   VerticalOptions="CenterAndExpand" 
-                   HorizontalOptions="CenterAndExpand"/>
-        </StackLayout>
+        <Grid BackgroundColor="WhiteSmoke">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" BackgroundColor="White">
+                
+            </Grid>
+            <!-- Control zone -->
+            <Grid Grid.Row="1">
+                <Frame CornerRadius="100" 
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Center"
+                       WidthRequest="50"
+                       HeightRequest="50">
+                    <Button BackgroundColor="#E10303"
+                            x:Name="btnRecord"
+                            WidthRequest="100"
+                            HeightRequest="100"
+                            CornerRadius="100"
+                            Clicked="BtnRecord_Clicked"/>
+                </Frame>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
