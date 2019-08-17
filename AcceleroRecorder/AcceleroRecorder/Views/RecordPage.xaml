@@ -19,40 +19,44 @@
                 <ColumnDefinition Width="10"/>
             </Grid.ColumnDefinitions>
             <!-- Monitoring zone -->
-            <Grid Grid.Row="1" Grid.Column="1" BackgroundColor="White">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="20"/>
-                </Grid.RowDefinitions>
-                <!-- Monitoring value -->
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <!-- X data -->
-                    <Grid Grid.Column="0">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="X : " />
-                            <Label Text="{Binding Xdata}" />
-                        </StackLayout>
+            <Grid Grid.Row="1" Grid.Column="1" >
+                <Frame BackgroundColor="White">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="20"/>
+                        </Grid.RowDefinitions>
+                        <!-- Monitoring value -->
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <!-- X data -->
+                            <Grid Grid.Column="0">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="X : " />
+                                    <Label Text="{Binding Xdata}" />
+                                </StackLayout>
+                            </Grid>
+                            <!-- Y data -->
+                            <Grid Grid.Column="1">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Y : " />
+                                    <Label Text="{Binding Ydata}" />
+                                </StackLayout>
+                            </Grid>
+                            <!-- Z data -->
+                            <Grid Grid.Column="2">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Z : " />
+                                    <Label Text="{Binding Zdata}" />
+                                </StackLayout>
+                            </Grid>
+                        </Grid>
                     </Grid>
-                    <!-- Y data -->
-                    <Grid Grid.Column="1">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Y : " />
-                            <Label Text="{Binding Ydata}" />
-                        </StackLayout>
-                    </Grid>
-                    <!-- Z data -->
-                    <Grid Grid.Column="2">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Z : " />
-                            <Label Text="{Binding Zdata}" />
-                        </StackLayout>
-                    </Grid>
-                </Grid>
+                </Frame>
             </Grid>
             <!-- Control zone -->
             <Grid Grid.Row="2"  Grid.Column="1">
