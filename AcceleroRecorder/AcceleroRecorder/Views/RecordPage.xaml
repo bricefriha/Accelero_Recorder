@@ -13,16 +13,40 @@
         <Grid BackgroundColor="WhiteSmoke">
             <Grid.RowDefinitions>
                 <RowDefinition Height="10"/>
-                <RowDefinition Height="2*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="10"/>
             </Grid.ColumnDefinitions>
-            <!-- Monitoring zone -->
+            <!-- Timer Zone -->
             <Grid x:Name="gridMonitor"  Grid.Row="1" Grid.Column="1" >
+                 <!--Timer--> 
+                    <Frame>
+                        <StackLayout HorizontalOptions="Center" 
+                                 VerticalOptions="Center"
+                                 Orientation="Horizontal">
+                        <Label x:Name="lblMinutes" 
+                               FontSize="Large"
+                               Text="00"/>
+                        <Label Text=":"
+                               FontSize="Large"/>
+                        <Label x:Name="lblSeconde" 
+                               FontSize="Large"
+                               Text="00"/>
+                        <Label Text=":"
+                               FontSize="Large"/>
+                        <Label x:Name="lblMilliSec" 
+                               FontSize="Large"
+                               Text="00"/>
+                    </StackLayout>
+                    </Frame>
+            </Grid>
+            <!-- Monitoring zone -->
+            <Grid  Grid.Row="2" Grid.Column="1" >
                 <Frame BackgroundColor="White">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -64,19 +88,45 @@
                 </Frame>
             </Grid>
             <!-- Control zone -->
-            <Grid Grid.Row="2"  Grid.Column="1">
-                <Frame CornerRadius="100" 
+            <Grid Grid.Row="3"  Grid.Column="1">
+                <StackLayout Orientation="Vertical">
+                    <!-- Timer --><!--
+                    <Frame>
+                        <StackLayout HorizontalOptions="Center" 
+                                 VerticalOptions="CenterAndExpand"
+                                 Orientation="Horizontal">
+                            <Label x:Name="lblHours" 
+                               FontSize="Large"
+                               Text="00"/>
+                            <Label Text=":"
+                               FontSize="Large"/>
+                            <Label x:Name="lblMinutes" 
+                               FontSize="Large"
+                               Text="00"/>
+                            <Label Text=":"
+                               FontSize="Large"/>
+                            <Label x:Name="lblSeconde" 
+                               FontSize="Large"
+                               Text="00"/>
+
+                        </StackLayout>
+                    </Frame>-->
+                    
+                    <!-- Button record -->
+                    <Frame CornerRadius="100" 
                        HorizontalOptions="Center" 
-                       VerticalOptions="Center"
+                       VerticalOptions="CenterAndExpand"
                        WidthRequest="50"
                        HeightRequest="50">
-                    <Button BackgroundColor="#E10303"
+                        <Button BackgroundColor="#E10303"
                             x:Name="btnRecord"
                             WidthRequest="100"
                             HeightRequest="100"
                             CornerRadius="100"
                             Clicked="BtnRecord_Clicked"/>
-                </Frame>
+                    </Frame>
+                </StackLayout>
+                
             </Grid>
         </Grid>
     </ContentPage.Content>
