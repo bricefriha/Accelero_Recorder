@@ -18,7 +18,7 @@ namespace AcceleroRecorder.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RecordPage : ContentPage
     {
-        
+        Stopwatch watch = new Stopwatch();
         RecordViewModel vm ;
         // Set speed delay for monitoring changes.
         SensorSpeed speed = SensorSpeed.UI;
@@ -55,20 +55,8 @@ namespace AcceleroRecorder.Views
             //Timer timer = new Timer(300.0);
             //timer.Start();
 
-            Stopwatch watch = new Stopwatch();
-            watch.Start();
-
-            // Launch the timer
-            Device.StartTimer(TimeSpan.FromMilliseconds(1), () =>
-            {
-                Device.BeginInvokeOnMainThread(() =>
-                    {
-                        lblMilliSec.Text = watch.Elapsed.Milliseconds.ToString();
-                        lblMinutes.Text = watch.Elapsed.Minutes.ToString("00");
-                        lblSecond.Text = watch.Elapsed.Seconds.ToString("00");
-                    });
-                return true; // True = Repeat again, False = Stop the timer
-            });
+            
+            
 
         }
         /// <summary>
@@ -99,6 +87,28 @@ namespace AcceleroRecorder.Views
                 // Other error has occurred.
             }
         }
+        private void StartTimer()
+        {
+            watch.Start();
+
+            // Launch the timer
+            Device.StartTimer(TimeSpan.FromMilliseconds(1), () =>
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    lblMilliSec.Text = watch.Elapsed.Milliseconds.ToString("00");
+                    lblMinutes.Text = watch.Elapsed.Minutes.ToString("00");
+                    lblSecond.Text = watch.Elapsed.Seconds.ToString("00");
+                });
+                return true; // True = Repeat again, False = Stop the timer
+            });
+        }
+        private void StopTimer()
+        {
+            //watch.Stop();
+
+            watch.Reset();
+        }
 
         /// <summary>
         /// Switch a button On or Off
@@ -113,15 +123,21 @@ namespace AcceleroRecorder.Views
                 {
                     // If it is Off
                     case 100:
-                        //Set it On
+                        // Set it On
                         btn.CornerRadius = 10;
-                        
+
+                        // Start The timer
+                        StartTimer();
                         break;
 
                     // If it is On
                     case 10:
-                        //Set it Off
+                        
+                        // Set it Off
                         btn.CornerRadius = 100;
+
+                        // Stop the timer
+                        StopTimer();
                         break;
                 }
             }
