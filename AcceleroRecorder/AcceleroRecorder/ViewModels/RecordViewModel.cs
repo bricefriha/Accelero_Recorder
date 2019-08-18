@@ -118,19 +118,19 @@ namespace AcceleroRecorder.ViewModels
             {
                 Entries =  new Collection<Entry>
                 {
-                    // Set X data
-                    new Entry(xData)
-                    {
-                        Label = "Xdata",
-                        ValueLabel = xData.ToString(),
-                        Color = SKColor.Parse("#E5001B")
-                    },
                     // Set Y data
                     new Entry(yData)
                     {
                         Label = "Ydata",
                         ValueLabel = yData.ToString(),
                         Color = SKColor.Parse("#18CC00")
+                    },
+                    // Set X data
+                    new Entry(xData)
+                    {
+                        Label = "Xdata",
+                        ValueLabel = xData.ToString(),
+                        Color = SKColor.Parse("#E5001B")
                     },
                     // Set Z data
                     new Entry(zdata)

@@ -35,67 +35,11 @@ namespace AcceleroRecorder.Views
         }
         void Accelerometer_ReadingChanged(object sender, AccelerometerChangedEventArgs e)
         {
+            // Get the data reading
             var data = e.Reading;
 
-            //// Set X data
-            //vm.Xdata = Convert.ToDouble(data.Acceleration.X);
-
-            //// Set Y data
-            //vm.Ydata = Convert.ToDouble(data.Acceleration.Y);
-
-            //// Set Z data
-            //vm.Zdata = Convert.ToDouble(data.Acceleration.Z);
-
-           vm.RefreshValuesChart(data.Acceleration.X, data.Acceleration.Y, data.Acceleration.Z);
-
-            //vm.Chart = new RadarChart()
-            //{
-            //    Entries = new Collection<Microcharts.Entry>
-            //    {
-            //        new Microcharts.Entry(data.Acceleration.X)
-            //        {
-            //            Label = "Xdata",
-            //            ValueLabel = data.Acceleration.X.ToString(),
-            //            Color = SKColor.Parse("#2c3e50")
-            //        },
-            //        new Microcharts.Entry(data.Acceleration.Y)
-            //        {
-            //            Label = "Ydata",
-            //            ValueLabel = data.Acceleration.Y.ToString(),
-            //            Color = SKColor.Parse("#77d065")
-            //        },
-            //        new Microcharts.Entry(data.Acceleration.Z)
-            //        {
-            //            Label = "Zdata",
-            //            ValueLabel = data.Acceleration.Z.ToString(),
-            //            Color = SKColor.Parse("#b455b6")
-            //        },
-            //    }
-            //};
-            //vm.Chart.Entries = new Collection<Microcharts.Entry>
-            // {
-            //     new Microcharts.Entry(data.Acceleration.X)
-            //     {
-            //         Label = "Xdata",
-            //         ValueLabel = data.Acceleration.X.ToString(),
-            //         Color = SKColor.Parse("#2c3e50")
-            //     },
-            //     new Microcharts.Entry(data.Acceleration.Y)
-            //     {
-            //         Label = "Ydata",
-            //         ValueLabel = data.Acceleration.Y.ToString(),
-            //         Color = SKColor.Parse("#77d065")
-            //     },
-            //     new Microcharts.Entry(data.Acceleration.Z)
-            //     {
-            //         Label = "Zdata",
-            //         ValueLabel = data.Acceleration.Z.ToString(),
-            //         Color = SKColor.Parse("#b455b6")
-            //     },
-            //};
-            //recPage.IsVisible = false;
-
-            //recPage.IsVisible = true;
+            // Refresh the chart with the new value
+            vm.RefreshValuesChart(data.Acceleration.X, data.Acceleration.Y, data.Acceleration.Z);
 
         }
 
@@ -106,19 +50,6 @@ namespace AcceleroRecorder.Views
 
             // Start or Stop the accelerometer
             ToggleAccelerometer();
-
-            //Task task = Task.Factory.StartNew(() =>
-            //{
-            //    // While the accelerometer is recording
-            //    while (Accelerometer.IsMonitoring)
-            //    {
-            //        vm.Entries.Add(new Microcharts.Entry(128)
-            //        {
-            //            Label = DateTime.Now.ToString("h:mm:ss tt"),
-            //            ValueLabel = "128",
-            //        });
-            //    }
-            //});
         }
         /// <summary>
         /// Method allowing to Start or Stop the accelerometer
