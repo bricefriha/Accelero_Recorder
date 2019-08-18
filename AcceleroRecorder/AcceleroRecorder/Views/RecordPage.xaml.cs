@@ -4,9 +4,11 @@ using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -50,6 +52,24 @@ namespace AcceleroRecorder.Views
 
             // Start or Stop the accelerometer
             ToggleAccelerometer();
+            //Timer timer = new Timer(300.0);
+            //timer.Start();
+
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+
+            // Launch the timer
+            Device.StartTimer(TimeSpan.FromMilliseconds(1), () =>
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                    {
+                        lblMilliSec.Text = watch.Elapsed.Milliseconds.ToString();
+                        lblMinutes.Text = watch.Elapsed.Minutes.ToString("00");
+                        lblSecond.Text = watch.Elapsed.Seconds.ToString("00");
+                    });
+                return true; // True = Repeat again, False = Stop the timer
+            });
+
         }
         /// <summary>
         /// Method allowing to Start or Stop the accelerometer
@@ -95,6 +115,7 @@ namespace AcceleroRecorder.Views
                     case 100:
                         //Set it On
                         btn.CornerRadius = 10;
+                        
                         break;
 
                     // If it is On
