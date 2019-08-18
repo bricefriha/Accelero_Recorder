@@ -34,8 +34,8 @@ namespace AcceleroRecorder.ViewModels
                 OnPropertyChanged();
             }
         }
-        private double xdata;
-        public double Xdata
+        private float xdata;
+        public float Xdata
         {
             get { return xdata; }
             set
@@ -44,8 +44,8 @@ namespace AcceleroRecorder.ViewModels
                 OnPropertyChanged();
             }
         }
-        private double ydata;
-        public double Ydata
+        private float ydata;
+        public float Ydata
         {
             get { return ydata; }
             set
@@ -54,8 +54,8 @@ namespace AcceleroRecorder.ViewModels
                 OnPropertyChanged();
             }
         }
-        private double zdata;
-        public double Zdata
+        private float zdata;
+        public float Zdata
         {
             get { return zdata; }
             set
@@ -102,16 +102,22 @@ namespace AcceleroRecorder.ViewModels
             };
             this.Chart = new RadarChart() { Entries = entries };
         }
-        public void RefreshValuesChart(float xData, float yData, float zdata)
+        /// <summary>
+        /// This is the method allowing to refresh the chart values
+        /// </summary>
+        /// <param name="xData"></param>
+        /// <param name="yData"></param>
+        /// <param name="zData"></param>
+        public void RefreshValuesChart(float xData, float yData, float zData)
         {
             // Set X data
-            this.Xdata = Convert.ToDouble(xData);
+            this.Xdata = xData;
 
             // Set Y data
-            this.Ydata = Convert.ToDouble(xData);
+            this.Ydata = yData;
 
             // Set Z data
-            this.Zdata = Convert.ToDouble(xData);
+            this.Zdata = zData;
 
             // Refresh the chart value
             this.Chart = new RadarChart()
@@ -137,6 +143,50 @@ namespace AcceleroRecorder.ViewModels
                     {
                         Label = "Zdata",
                         ValueLabel = zdata.ToString(),
+                        Color = SKColor.Parse("#0018CC")
+                    },
+                }
+            };
+        }
+        /// <summary>
+        /// This is the method allowing to clear the chart values
+        /// </summary>
+        public void ClearValuesChart()
+        {
+            const float zero = 0;
+            // Set X data
+            this.Xdata = zero;
+
+            // Set Y data
+            this.Ydata = zero;
+
+            // Set Z data
+            this.Zdata = zero;
+
+            // Refresh the chart value
+            this.Chart = new RadarChart()
+            {
+                Entries = new Collection<Entry>
+                {
+                    // Set Y data
+                    new Entry(zero)
+                    {
+                        Label = "Ydata",
+                        ValueLabel = zero.ToString(),
+                        Color = SKColor.Parse("#18CC00")
+                    },
+                    // Set X data
+                    new Entry(zero)
+                    {
+                        Label = "Xdata",
+                        ValueLabel = zero.ToString(),
+                        Color = SKColor.Parse("#E5001B")
+                    },
+                    // Set Z data
+                    new Entry(zero)
+                    {
+                        Label = "Zdata",
+                        ValueLabel = zero.ToString(),
                         Color = SKColor.Parse("#0018CC")
                     },
                 }

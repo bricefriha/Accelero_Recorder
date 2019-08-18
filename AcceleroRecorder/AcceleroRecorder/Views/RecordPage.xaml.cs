@@ -63,10 +63,8 @@ namespace AcceleroRecorder.Views
                     // Stop the Accelerometer
                     Accelerometer.Stop();
 
-                    // Clean data on the screen
-                    vm.Xdata = 0;
-                    vm.Ydata = 0;
-                    vm.Zdata = 0;
+                    // Clear data on the screen
+                    vm.ClearValuesChart();
                 }
                 else
                     // Start the Accelerometer
