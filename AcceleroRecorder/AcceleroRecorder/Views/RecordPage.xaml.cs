@@ -52,11 +52,7 @@ namespace AcceleroRecorder.Views
 
             // Start or Stop the accelerometer
             ToggleAccelerometer();
-            //Timer timer = new Timer(300.0);
-            //timer.Start();
 
-            
-            
 
         }
         /// <summary>
@@ -87,6 +83,9 @@ namespace AcceleroRecorder.Views
                 // Other error has occurred.
             }
         }
+        /// <summary>
+        /// Mothod which start the timer
+        /// </summary>
         private void StartTimer()
         {
             watch.Start();
@@ -103,6 +102,9 @@ namespace AcceleroRecorder.Views
                 return true; // True = Repeat again, False = Stop the timer
             });
         }
+        /// <summary>
+        /// Mothod which reset the timer
+        /// </summary>
         private void StopTimer()
         {
             //watch.Stop();
