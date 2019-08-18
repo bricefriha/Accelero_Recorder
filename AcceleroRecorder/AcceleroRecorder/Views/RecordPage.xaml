@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             x:Name="recPage"
+               
              mc:Ignorable="d"
              x:Class="AcceleroRecorder.Views.RecordPage"
              Title="{Binding Title}">
@@ -19,13 +22,15 @@
                 <ColumnDefinition Width="10"/>
             </Grid.ColumnDefinitions>
             <!-- Monitoring zone -->
-            <Grid Grid.Row="1" Grid.Column="1" >
+            <Grid x:Name="gridMonitor"  Grid.Row="1" Grid.Column="1" >
                 <Frame BackgroundColor="White">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="20"/>
                         </Grid.RowDefinitions>
+                        <!-- Chart zone -->
+                        <microcharts:ChartView x:Name="chartView" Chart="{Binding Chart}" />
                         <!-- Monitoring value -->
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
