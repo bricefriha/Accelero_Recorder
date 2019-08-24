@@ -95,7 +95,7 @@ namespace AcceleroRecorder.Views
             {
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                    lblMilliSec.Text = watch.Elapsed.Milliseconds.ToString("00");
+                    lblMilliSec.Text = watch.Elapsed.Milliseconds.ToString("000");
                     lblMinutes.Text = watch.Elapsed.Minutes.ToString("00");
                     lblSecond.Text = watch.Elapsed.Seconds.ToString("00");
                 });
