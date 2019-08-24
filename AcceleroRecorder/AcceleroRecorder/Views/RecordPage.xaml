@@ -23,26 +23,35 @@
                 <ColumnDefinition Width="10"/>
             </Grid.ColumnDefinitions>
             <!-- Timer Zone -->
-            <Grid x:Name="gridMonitor"  Grid.Row="1" Grid.Column="1" >
+            <Grid x:Name="gridMonitor" Grid.Row="1" Grid.Column="1" >
                  <!--Timer--> 
                     <Frame>
-                        <StackLayout HorizontalOptions="Center" 
-                                 VerticalOptions="Center"
-                                 Orientation="Horizontal">
-                        <Label x:Name="lblMinutes" 
-                               FontSize="Large"
-                               Text="00"/>
-                        <Label Text=":"
-                               FontSize="Large"/>
-                        <Label x:Name="lblSeconde" 
-                               FontSize="Large"
-                               Text="00"/>
-                        <Label Text=":"
-                               FontSize="Large"/>
-                        <Label x:Name="lblMilliSec" 
-                               FontSize="Large"
-                               Text="00"/>
+                        <StackLayout>
+                            <!-- The label Timer -->
+                            <Label Text="TIMER :"
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center" 
+                                   FontAttributes="Bold"/>
+                            <!-- The actual timer-->
+                            <StackLayout HorizontalOptions="Center" 
+                                         VerticalOptions="Center"
+                                         Orientation="Horizontal">
+                                <Label x:Name="lblMinutes" 
+                                   FontSize="Large"
+                                   Text="00"/>
+                                <Label Text=":"
+                                   FontSize="Large"/>
+                                <Label x:Name="lblSeconde" 
+                                   FontSize="Large"
+                                   Text="00"/>
+                                <Label Text=":"
+                                   FontSize="Large"/>
+                                <Label x:Name="lblMilliSec" 
+                                   FontSize="Large"
+                                   Text="00"/>
+                            </StackLayout>
                     </StackLayout>
+                        
                     </Frame>
             </Grid>
             <!-- Monitoring zone -->
