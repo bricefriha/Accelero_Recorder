@@ -59,21 +59,20 @@ namespace AcceleroRecorder.Object
             // Change the state attribut
             this.isRecording = true;
 
+            //Start the watch
             watch.Start();
+
             // Launch the timer
             Device.StartTimer(TimeSpan.FromMilliseconds(100), () =>
             {
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                    //this.Milliseconds = this.watch.Elapsed.Milliseconds.ToString("000");
-                    //this.Minutes = this.watch.Elapsed.Minutes.ToString("00");
-                    //this.Seconds = this.watch.Elapsed.Seconds.ToString("00");
 
                     //Add a frame to the frames
                     this.frames.Add(new Frame(watch.Elapsed.Minutes.ToString("00") + ":" + watch.Elapsed.Seconds.ToString("00") + ":" + watch.Elapsed.Milliseconds.ToString("000"), this.vm.Xdata, this.vm.Ydata, this.vm.Zdata));
 
                 });
-                return this.isRecording; // True = Repeat again, False = Stop the timer
+                return this.isRecording; 
             });
         }
 
@@ -85,8 +84,15 @@ namespace AcceleroRecorder.Object
             // Change the state attribut
             this.isRecording = false;
 
+            // Stop the watch
             watch.Stop();
+
+            // Reset the watch
+            watch.Reset();
         }
+        /// <summary>
+        /// Method to clear the Record data
+        /// </summary>
         public void Clear()
         {
             // Delete every single frames
