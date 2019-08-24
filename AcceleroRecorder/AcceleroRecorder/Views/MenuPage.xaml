@@ -14,22 +14,21 @@
                 <RowDefinition Height="150"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+            <!---->
+            <!-- Menu header-->
             <Grid Grid.Row="0"
                   BackgroundColor="#B20000">
-                <!--<Label Text="Menu"
-                       VerticalOptions="CenterAndExpand"
-                       HorizontalOptions="CenterAndExpand"
-                       FontSize="Title"
-                       TextColor="WhiteSmoke"
-                       FontAttributes="Bold"
-                       />-->
                 <Frame VerticalOptions="Center"
                        HorizontalOptions="Center"
                        WidthRequest="50"
                        HeightRequest="50">
+                    <!---->
                     <!-- Put app logo here -->
+                    <!---->
                 </Frame>
             </Grid>
+            <!---->
+            <!-- Menu tabs-->
             <Grid Grid.Row="1"
                   BackgroundColor="WhiteSmoke">
                 <ListView x:Name="ListViewMenu"
