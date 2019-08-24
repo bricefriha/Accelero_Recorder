@@ -1,4 +1,5 @@
-﻿using AcceleroRecorder.ViewModels;
+﻿using AcceleroRecorder.Object;
+using AcceleroRecorder.ViewModels;
 using Microcharts;
 using SkiaSharp;
 using System;
@@ -20,6 +21,8 @@ namespace AcceleroRecorder.Views
     {
         Stopwatch watch = new Stopwatch();
         RecordViewModel vm ;
+        Record record;
+
         // Set speed delay for monitoring changes.
         SensorSpeed speed = SensorSpeed.UI;
         public RecordPage()
@@ -31,6 +34,9 @@ namespace AcceleroRecorder.Views
 
             // Get the viewmodel
             vm = (RecordViewModel)BindingContext;
+
+            // Instanciate the record var
+            record = new Record(vm);
 
             // Register for reading changes, be sure to unsubscribe when finished
             Accelerometer.ReadingChanged += Accelerometer_ReadingChanged;
@@ -83,40 +89,12 @@ namespace AcceleroRecorder.Views
                 // Other error has occurred.
             }
         }
-        /// <summary>
-        /// Mothod which start the timer
-        /// </summary>
-        private void StartTimer()
-        {
-            watch.Start();
-
-            // Launch the timer
-            Device.StartTimer(TimeSpan.FromMilliseconds(1), () =>
-            {
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    lblMilliSec.Text = watch.Elapsed.Milliseconds.ToString("000");
-                    lblMinutes.Text = watch.Elapsed.Minutes.ToString("00");
-                    lblSecond.Text = watch.Elapsed.Seconds.ToString("00");
-                });
-                return true; // True = Repeat again, False = Stop the timer
-            });
-        }
-        /// <summary>
-        /// Mothod which reset the timer
-        /// </summary>
-        private void StopTimer()
-        {
-            //watch.Stop();
-
-            watch.Reset();
-        }
 
         /// <summary>
         /// Switch a button On or Off
         /// </summary>
         /// <param name="sender">the button</param>
-        private void SwitchOnOrOff(Button btn)
+        private async void SwitchOnOrOff(Button btn)
         {
             try
             {
@@ -129,7 +107,11 @@ namespace AcceleroRecorder.Views
                         btn.CornerRadius = 10;
 
                         // Start The timer
-                        StartTimer();
+                        vm.StartTimer();
+
+                        // Start to recording
+                        record.Start();
+
                         break;
 
                     // If it is On
@@ -139,7 +121,17 @@ namespace AcceleroRecorder.Views
                         btn.CornerRadius = 100;
 
                         // Stop the timer
-                        StopTimer();
+                        vm.StopTimer();
+
+                        // Start to recording
+                        record.Stop();
+
+                        //await recPage.DisplayAlert(frame.Time,/* frame.Time +*/ " | Z :" + frame.XData.ToString() + "Y :" + frame.YData.ToString() + "X :" + frame.ZData.ToString(), "Good for you sir");
+
+                        // Clear data
+                        record.Clear();
+
+
                         break;
                 }
             }

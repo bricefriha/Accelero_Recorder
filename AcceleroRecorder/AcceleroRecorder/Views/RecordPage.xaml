@@ -38,17 +38,17 @@
                                          Orientation="Horizontal">
                                 <Label x:Name="lblMinutes" 
                                    FontSize="Large"
-                                   Text="00"/>
+                                   Text="{Binding Minutes}"/>
                                 <Label Text=":"
                                    FontSize="Large"/>
                                 <Label x:Name="lblSecond" 
                                    FontSize="Large"
-                                   Text="00"/>
+                                   Text="{Binding Seconds}"/>
                                 <Label Text=":"
                                    FontSize="Large"/>
                                 <Label x:Name="lblMilliSec" 
                                    FontSize="Large"
-                                   Text="000"/>
+                                   Text="{Binding Milliseconds}"/>
                             </StackLayout>
                     </StackLayout>
                         

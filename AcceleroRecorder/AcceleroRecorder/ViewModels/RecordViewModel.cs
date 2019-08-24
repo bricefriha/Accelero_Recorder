@@ -4,8 +4,10 @@ using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace AcceleroRecorder.ViewModels
 {
@@ -14,6 +16,16 @@ namespace AcceleroRecorder.ViewModels
     /// </summary>
     public class RecordViewModel : BaseViewModel
     {
+        private Stopwatch watch;
+        public Stopwatch Watch
+        {
+            get { return watch; }
+            set
+            {
+                watch = value;
+                OnPropertyChanged();
+            }
+        }
         private RadarChart chart;
         public RadarChart Chart
         {
@@ -21,6 +33,36 @@ namespace AcceleroRecorder.ViewModels
             set
             {
                 chart = value;
+                OnPropertyChanged();
+            }
+        }
+        private string milliseconds;
+        public string Milliseconds
+        {
+            get { return milliseconds; }
+            set
+            {
+                milliseconds = value;
+                OnPropertyChanged();
+            }
+        }
+        private string seconds;
+        public string Seconds
+        {
+            get { return seconds; }
+            set
+            {
+                seconds = value;
+                OnPropertyChanged();
+            }
+        }
+        private string minutes;
+        public string Minutes
+        {
+            get { return minutes; }
+            set
+            {
+                minutes = value;
                 OnPropertyChanged();
             }
         }
@@ -72,28 +114,32 @@ namespace AcceleroRecorder.ViewModels
             this.Xdata = 0;
             this.Ydata = 0;
             this.Zdata = 0;
+            this.milliseconds = "000";
+            this.seconds = "00";
+            this.minutes = "00";
 
+            this.watch = new Stopwatch();
             //this.entries
 
             //this.Chart = new LineChart()
             //{
             //    Entries = this.entries
             //};
-            entries = new Collection<Entry>
+            entries = new Collection<Microcharts.Entry>
              {
-                 new Entry(0)
+                 new Microcharts.Entry(0)
                  {
                      Label = "Xdata",
                      ValueLabel = "0",
                      Color = SKColor.Parse("#2c3e50")
                  },
-                 new Entry(0)
+                 new Microcharts.Entry(0)
                  {
                      Label = "Ydata",
                      ValueLabel = "0",
                      Color = SKColor.Parse("#77d065")
                  },
-                 new Entry(0)
+                 new Microcharts.Entry(0)
                  {
                      Label = "Zdata",
                      ValueLabel = "0",
@@ -122,24 +168,24 @@ namespace AcceleroRecorder.ViewModels
             // Refresh the chart value
             this.Chart = new RadarChart()
             {
-                Entries =  new Collection<Entry>
+                Entries =  new Collection<Microcharts.Entry>
                 {
                     // Set Y data
-                    new Entry(yData)
+                    new Microcharts.Entry(yData)
                     {
                         Label = "Ydata",
                         ValueLabel = yData.ToString(),
                         Color = SKColor.Parse("#18CC00")
                     },
                     // Set X data
-                    new Entry(xData)
+                    new Microcharts.Entry(xData)
                     {
                         Label = "Xdata",
                         ValueLabel = xData.ToString(),
                         Color = SKColor.Parse("#E5001B")
                     },
                     // Set Z data
-                    new Entry(zdata)
+                    new Microcharts.Entry(zdata)
                     {
                         Label = "Zdata",
                         ValueLabel = zdata.ToString(),
@@ -166,24 +212,24 @@ namespace AcceleroRecorder.ViewModels
             // Refresh the chart value
             this.Chart = new RadarChart()
             {
-                Entries = new Collection<Entry>
+                Entries = new Collection<Microcharts.Entry>
                 {
                     // Set Y data
-                    new Entry(zero)
+                    new Microcharts.Entry(zero)
                     {
                         Label = "Ydata",
                         ValueLabel = zero.ToString(),
                         Color = SKColor.Parse("#18CC00")
                     },
                     // Set X data
-                    new Entry(zero)
+                    new Microcharts.Entry(zero)
                     {
                         Label = "Xdata",
                         ValueLabel = zero.ToString(),
                         Color = SKColor.Parse("#E5001B")
                     },
                     // Set Z data
-                    new Entry(zero)
+                    new Microcharts.Entry(zero)
                     {
                         Label = "Zdata",
                         ValueLabel = zero.ToString(),
@@ -191,6 +237,34 @@ namespace AcceleroRecorder.ViewModels
                     },
                 }
             };
+        }
+        /// <summary>
+        /// Mothod which start the timer
+        /// </summary>
+        public void StartTimer()
+        {
+            this.watch.Start();
+
+            // Launch the timer
+            Device.StartTimer(TimeSpan.FromMilliseconds(1), () =>
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    this.Milliseconds = this.watch.Elapsed.Milliseconds.ToString("000");
+                    this.Minutes = this.watch.Elapsed.Minutes.ToString("00");
+                    this.Seconds = this.watch.Elapsed.Seconds.ToString("00");
+                });
+                return true; // True = Repeat again, False = Stop the timer
+            });
+        }
+        /// <summary>
+        /// Mothod which reset the timer
+        /// </summary>
+        public void StopTimer()
+        {
+            //watch.Stop();
+
+            this.watch.Reset();
         }
     }
 }
