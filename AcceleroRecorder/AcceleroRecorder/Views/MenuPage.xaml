@@ -4,28 +4,61 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             Visual="Material"
              x:Class="AcceleroRecorder.Views.MenuPage"
              Title="e">
-    <StackLayout VerticalOptions="FillAndExpand">
-        <ListView x:Name="ListViewMenu"
+    <StackLayout VerticalOptions="FillAndExpand"
+                 >
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0"
+                  BackgroundColor="#B20000">
+                <!--<Label Text="Menu"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="Title"
+                       TextColor="WhiteSmoke"
+                       FontAttributes="Bold"
+                       />-->
+                <Frame VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       WidthRequest="50"
+                       HeightRequest="50">
+                    <!-- Put app logo here -->
+                </Frame>
+            </Grid>
+            <Grid Grid.Row="1"
+                  BackgroundColor="WhiteSmoke">
+                <ListView x:Name="ListViewMenu"
                     HasUnevenRows="True"
-                    ItemSelected="ListViewMenu_ItemSelected">
-            <d:ListView.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Item 1</x:String>
-                    <x:String>Item 2</x:String>
-                </x:Array>
-            </d:ListView.ItemsSource>
-            <ListView.ItemTemplate>
-                
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid Padding="10">
-                            <Label Text="{Binding Title}" d:Text="{Binding .}" FontSize="20"/>
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                    ItemSelected="ListViewMenu_ItemSelected"
+                    SeparatorColor="Gray">
+                    <d:ListView.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Item 1</x:String>
+                            <x:String>Item 2</x:String>
+                        </x:Array>
+                    </d:ListView.ItemsSource>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10">
+                                    <Label 
+                                       Text="{Binding Title}" 
+                                       d:Text="{Binding .}" 
+                                       FontSize="20"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Grid>
+        
+        
+
     </StackLayout>
 </ContentPage>
