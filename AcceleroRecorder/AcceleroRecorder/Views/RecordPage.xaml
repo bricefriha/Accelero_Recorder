@@ -48,7 +48,7 @@
                                    FontSize="Large"/>
                                 <Label x:Name="lblMilliSec" 
                                    FontSize="Large"
-                                   Text="00"/>
+                                   Text="000"/>
                             </StackLayout>
                     </StackLayout>
                         
