@@ -41,7 +41,7 @@
                                    Text="00"/>
                                 <Label Text=":"
                                    FontSize="Large"/>
-                                <Label x:Name="lblSeconde" 
+                                <Label x:Name="lblSecond" 
                                    FontSize="Large"
                                    Text="00"/>
                                 <Label Text=":"
