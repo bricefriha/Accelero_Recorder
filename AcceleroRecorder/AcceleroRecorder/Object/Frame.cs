@@ -7,7 +7,7 @@ namespace AcceleroRecorder.Object
     public class Frame
     {
         // Declare attribut
-        private DateTime time;
+        private string time;
         private float xData;
         private float yData;
         private float zData;
@@ -19,7 +19,7 @@ namespace AcceleroRecorder.Object
         /// <param name="xData"> x data of the accelerometer a this time </param>
         /// <param name="yData"> y data of the accelerometer a this time</param>
         /// <param name="zData"> z data of the accelerometer a this time</param>
-        public Frame(DateTime time, float xData, float yData, float zData)
+        public Frame(string time, float xData, float yData, float zData)
         {
             this.time = time;
             this.xData = xData;
@@ -28,7 +28,7 @@ namespace AcceleroRecorder.Object
         }
 
         // Encapse
-        public DateTime Time { get => time;/* set => time = value;*/ }
+        public string Time { get => time;/* set => time = value;*/ }
         public float XData { get => xData; /*set => xData = value;*/ }
         public float YData { get => yData; /*set => yData = value;*/ }
         public float ZData { get => zData; /*set => zData = value;*/ }
