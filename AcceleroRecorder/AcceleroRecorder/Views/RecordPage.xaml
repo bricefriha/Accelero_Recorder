@@ -99,28 +99,7 @@
             <!-- Control zone -->
             <Grid Grid.Row="3"  Grid.Column="1">
                 <StackLayout Orientation="Vertical">
-                    <!-- Timer --><!--
-                    <Frame>
-                        <StackLayout HorizontalOptions="Center" 
-                                 VerticalOptions="CenterAndExpand"
-                                 Orientation="Horizontal">
-                            <Label x:Name="lblHours" 
-                               FontSize="Large"
-                               Text="00"/>
-                            <Label Text=":"
-                               FontSize="Large"/>
-                            <Label x:Name="lblMinutes" 
-                               FontSize="Large"
-                               Text="00"/>
-                            <Label Text=":"
-                               FontSize="Large"/>
-                            <Label x:Name="lblSeconde" 
-                               FontSize="Large"
-                               Text="00"/>
 
-                        </StackLayout>
-                    </Frame>-->
-                    
                     <!-- Button record -->
                     <Frame CornerRadius="100" 
                        HorizontalOptions="Center" 

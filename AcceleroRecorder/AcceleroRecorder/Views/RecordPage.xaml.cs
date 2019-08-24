@@ -4,9 +4,11 @@ using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -16,7 +18,7 @@ namespace AcceleroRecorder.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RecordPage : ContentPage
     {
-        
+        Stopwatch watch = new Stopwatch();
         RecordViewModel vm ;
         // Set speed delay for monitoring changes.
         SensorSpeed speed = SensorSpeed.UI;
@@ -50,6 +52,8 @@ namespace AcceleroRecorder.Views
 
             // Start or Stop the accelerometer
             ToggleAccelerometer();
+
+
         }
         /// <summary>
         /// Method allowing to Start or Stop the accelerometer
@@ -79,6 +83,34 @@ namespace AcceleroRecorder.Views
                 // Other error has occurred.
             }
         }
+        /// <summary>
+        /// Mothod which start the timer
+        /// </summary>
+        private void StartTimer()
+        {
+            watch.Start();
+
+            // Launch the timer
+            Device.StartTimer(TimeSpan.FromMilliseconds(1), () =>
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    lblMilliSec.Text = watch.Elapsed.Milliseconds.ToString("00");
+                    lblMinutes.Text = watch.Elapsed.Minutes.ToString("00");
+                    lblSecond.Text = watch.Elapsed.Seconds.ToString("00");
+                });
+                return true; // True = Repeat again, False = Stop the timer
+            });
+        }
+        /// <summary>
+        /// Mothod which reset the timer
+        /// </summary>
+        private void StopTimer()
+        {
+            //watch.Stop();
+
+            watch.Reset();
+        }
 
         /// <summary>
         /// Switch a button On or Off
@@ -93,14 +125,21 @@ namespace AcceleroRecorder.Views
                 {
                     // If it is Off
                     case 100:
-                        //Set it On
+                        // Set it On
                         btn.CornerRadius = 10;
+
+                        // Start The timer
+                        StartTimer();
                         break;
 
                     // If it is On
                     case 10:
-                        //Set it Off
+                        
+                        // Set it Off
                         btn.CornerRadius = 100;
+
+                        // Stop the timer
+                        StopTimer();
                         break;
                 }
             }
