@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -116,7 +117,7 @@ namespace AcceleroRecorder.Views
 
                     // If it is On
                     case 10:
-                        
+
                         // Set it Off
                         btn.CornerRadius = 100;
 
@@ -126,10 +127,16 @@ namespace AcceleroRecorder.Views
                         // Start to recording
                         record.Stop();
 
-                        //await recPage.DisplayAlert(frame.Time,/* frame.Time +*/ " | Z :" + frame.XData.ToString() + "Y :" + frame.YData.ToString() + "X :" + frame.ZData.ToString(), "Good for you sir");
+                        record.Save();
 
+                        string title = record.Title;
                         // Clear data
                         record.Clear();
+
+                        // Test
+                        Record testRecord = new Record(/*File.ReadAllText(fileName)*/Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), title + ".json"));
+                        await recPage.DisplayAlert("Test",testRecord.Title /*testRecord.Frames[0].Time,/* frame.Time + " | Z :" + testRecord.Frames[0].XData.ToString() + "Y :" + testRecord.Frames[0].YData.ToString() + "X :" + frame.ZData.ToString() */, "Good for you sir");
+
 
 
                         break;
