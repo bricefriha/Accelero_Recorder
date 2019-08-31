@@ -25,6 +25,11 @@ namespace AcceleroRecorder.ViewModels
             }
         }
 
+        public bool IsNotFilled
+        {
+            get { return !isFilled; }
+        }
+
         // Declare an observable collection of records
         private ObservableCollection<RecordItem> records; 
         public ObservableCollection<RecordItem> Records
@@ -42,7 +47,7 @@ namespace AcceleroRecorder.ViewModels
         public HistoryViewModel ()
         {
             // Set the title
-            this.Title = "Your record history";
+            this.Title = "History";
 
             // Fill the record collection
             FillRecords();

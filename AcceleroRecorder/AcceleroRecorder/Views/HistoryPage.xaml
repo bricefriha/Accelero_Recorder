@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="AcceleroRecorder.Views.HistoryPage"
              Title="{Binding Title}"
-             >
+             Visual="Material">
     <ContentPage.Resources>
         <Color x:Key="DeleteBtnBgColor">#B20000</Color>
         <Color x:Key="DeleteBtnFontColor">WhiteSmoke</Color>
@@ -16,6 +16,11 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
+            <Label Text="There is no record yet"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   IsVisible="{Binding IsNotFilled}" 
+                   FontAttributes="Bold"/>
             <ListView x:Name="lvRecord"
                   ItemsSource="{Binding Records}"
                   ItemTapped="LvRecord_ItemTapped"
