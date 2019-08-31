@@ -14,6 +14,17 @@ namespace AcceleroRecorder.ViewModels
     /// </summary>
     public class HistoryViewModel : BaseViewModel
     {
+        private bool isFilled;
+        public bool IsFilled
+        {
+            get { return isFilled; }
+            set
+            {
+                isFilled = value;
+                OnPropertyChanged();
+            }
+        }
+
         // Declare an observable collection of records
         private ObservableCollection<RecordItem> records; 
         public ObservableCollection<RecordItem> Records
@@ -49,6 +60,17 @@ namespace AcceleroRecorder.ViewModels
             // Define an index
             int i = 0;
 
+            // If some record are getted
+            if (filenames.Length > 0)
+            {
+                // Claimed it
+                this.isFilled = true;
+            }
+            else
+            {
+                // unclaimed it
+                this.isFilled = false;
+            }
             // Scaning all filnames
             foreach (string file in filenames)
             {
@@ -63,7 +85,6 @@ namespace AcceleroRecorder.ViewModels
                         Title = record.Title,
                         Filename = file,
                     }) ;
-
             }
         }
 

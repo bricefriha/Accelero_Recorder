@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="AcceleroRecorder.Views.HistoryPage"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             >
     <ContentPage.Resources>
         <Color x:Key="DeleteBtnBgColor">#B20000</Color>
         <Color x:Key="DeleteBtnFontColor">WhiteSmoke</Color>
@@ -14,27 +15,29 @@
         <ToolbarItem Text="Remove all" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <ListView x:Name="lvRecord"
+        <StackLayout>
+            <ListView x:Name="lvRecord"
                   ItemsSource="{Binding Records}"
-                  ItemTapped="LvRecord_ItemTapped">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid Grid.Column="0">
-                                <!-- Title -->
-                                <Label Text="{Binding Title}"
+                  ItemTapped="LvRecord_ItemTapped"
+                  IsVisible="{Binding IsFilled}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <!-- Title -->
+                                    <Label Text="{Binding Title}"
                                            HorizontalOptions="Center"
                                            VerticalOptions="Center" 
                                            FontAttributes="Bold"/>
-                            </Grid>
-                            <Grid Grid.Column="1">
-                                <!-- Remove Bouton -->
-                                <Button x:Name="btnDelete"
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <!-- Remove Bouton -->
+                                    <Button x:Name="btnDelete"
                                             CommandParameter="{Binding Id}"
                                             Text="Delete"
                                             TextColor="{StaticResource DeleteBtnFontColor}"
@@ -46,11 +49,13 @@
                                             CornerRadius="10"    
                                             FontSize="Micro"
                                             Clicked="BtnDelete_Clicked"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        
     </ContentPage.Content>
 </ContentPage>
