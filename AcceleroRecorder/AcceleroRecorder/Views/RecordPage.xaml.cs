@@ -127,17 +127,11 @@ namespace AcceleroRecorder.Views
                         // Start to recording
                         record.Stop();
 
+                        // Save the record
                         record.Save();
-
-                        string title = record.Title;
+                        
                         // Clear data
                         record.Clear();
-
-                        // Test
-                        Record testRecord = new Record(/*File.ReadAllText(fileName)*/Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), title + ".json"));
-                        await recPage.DisplayAlert("Test",testRecord.Title /*testRecord.Frames[0].Time,/* frame.Time + " | Z :" + testRecord.Frames[0].XData.ToString() + "Y :" + testRecord.Frames[0].YData.ToString() + "X :" + frame.ZData.ToString() */, "Good for you sir");
-
-
 
                         break;
                 }

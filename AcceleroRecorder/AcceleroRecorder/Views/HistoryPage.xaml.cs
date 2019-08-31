@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AcceleroRecorder.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,18 @@ namespace AcceleroRecorder.Views
         public HistoryPage()
         {
             InitializeComponent();
+
+            // Data Binding
+            BindingContext = new HistoryViewModel();
+        }
+
+        /// <summary>
+        ///  On tapped event List view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LvRecord_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
         }
     }
 }
