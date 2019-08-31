@@ -61,6 +61,7 @@ namespace AcceleroRecorder.ViewModels
                     {
                         Id = i++,
                         Title = record.Title,
+                        Filename = file,
                     }) ;
 
             }

@@ -4,22 +4,21 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="AcceleroRecorder.Views.HistoryPage">
+             x:Class="AcceleroRecorder.Views.HistoryPage"
+             Title="{Binding Title}">
     <ContentPage.Content>
         <ScrollView Orientation="Vertical">
             <ListView x:Name="lvRecord"
                       ItemsSource="{Binding Records}"
                       ItemTapped="LvRecord_ItemTapped">
-                <ListView.ItemTemplate x:Uid="{Binding Id}">
-                    <DataTemplate x:Uid="{Binding Id}">
-                        <ViewCell x:Uid="{Binding Id}">
-                            <Label Text="{Binding Title}"
-                                   HorizontalOptions="FillAndExpand"/>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding Title}"/>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollView>
-        
     </ContentPage.Content>
 </ContentPage>

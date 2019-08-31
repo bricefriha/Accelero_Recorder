@@ -1,4 +1,5 @@
-﻿using AcceleroRecorder.ViewModels;
+﻿using AcceleroRecorder.Models;
+using AcceleroRecorder.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace AcceleroRecorder.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HistoryPage : ContentPage
     {
+        List<RecordItem> recordItems;
         public HistoryPage()
         {
             InitializeComponent();
@@ -28,6 +30,14 @@ namespace AcceleroRecorder.Views
         /// <param name="e"></param>
         private void LvRecord_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            // Get the list view item index
+            var id = e.ItemIndex;
+
+            // Get the filename of the selected record
+            string filename = ((HistoryViewModel)BindingContext).Records[id].Filename;
+
+            // Switch page
+            Navigation.PushAsync(new DetailRecordPage(filename));
         }
     }
 }
