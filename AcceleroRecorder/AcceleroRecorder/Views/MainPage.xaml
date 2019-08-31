@@ -5,8 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:views="clr-namespace:AcceleroRecorder.Views"
-             x:Class="AcceleroRecorder.Views.MainPage"
-             >
+             x:Class="AcceleroRecorder.Views.MainPage">
 
     <MasterDetailPage.Master>
         <views:MenuPage />

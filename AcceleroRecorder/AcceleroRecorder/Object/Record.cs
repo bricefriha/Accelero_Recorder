@@ -156,7 +156,18 @@ namespace AcceleroRecorder.Object
             }
             else
             {
-                //
+                // Declare a new file name variable
+                string newFileName = fileName;
+
+                // While the newfile exist
+                for (int i = 0; File.Exists(newFileName); i++)
+                {
+                    // Increment a number at the end
+                    newFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), this.title + "_" + i.ToString() + ".json");
+                }
+
+                // Write the local file with the JSON with the new filename
+                File.WriteAllText(newFileName, recordJson);
             }
 
         }
