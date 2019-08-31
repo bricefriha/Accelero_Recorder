@@ -39,6 +39,7 @@
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Item 1</x:String>
                             <x:String>Item 2</x:String>
+                            <x:String>Item 2</x:String>
                         </x:Array>
                     </d:ListView.ItemsSource>
                     <ListView.ItemTemplate>

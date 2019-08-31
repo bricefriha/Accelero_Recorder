@@ -24,6 +24,7 @@ namespace AcceleroRecorder.Views
             menuItems = new List<HomeMenuItem>
             {
                 new HomeMenuItem {Id = MenuItemType.Record, Title="Record" },
+                new HomeMenuItem {Id = MenuItemType.History, Title="History" },
                 new HomeMenuItem {Id = MenuItemType.About, Title="About" }
             };
 

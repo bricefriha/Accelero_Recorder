@@ -7,6 +7,7 @@ namespace AcceleroRecorder.Models
     public enum MenuItemType
     {
         Record,
+        History,
         About
     }
     public class HomeMenuItem

@@ -25,15 +25,28 @@ namespace AcceleroRecorder.Views
             // Add the original page
             MenuPages.Add((int)MenuItemType.Record, (NavigationPage)Detail);
         }
+        /// <summary>
+        /// Method which manage the navigation from the menu
+        /// </summary>
+        /// <param name="id"> The ID of the menu item </param>
+        /// <returns></returns>
         public async Task NavigateFromMenu(int id)
         {
             if (!MenuPages.ContainsKey(id))
             {
                 switch (id)
                 {
+                    // Navigate to the record page
                     case (int)MenuItemType.Record:
                         MenuPages.Add(id, new NavigationPage(new RecordPage()));
                         break;
+
+                    // Navigate to the history page
+                    case (int)MenuItemType.History:
+                        MenuPages.Add(id, new NavigationPage(new HistoryPage()));
+                        break;
+
+                    // Navigate to the about page
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
