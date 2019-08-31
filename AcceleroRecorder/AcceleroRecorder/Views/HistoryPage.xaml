@@ -6,19 +6,51 @@
              mc:Ignorable="d"
              x:Class="AcceleroRecorder.Views.HistoryPage"
              Title="{Binding Title}">
+    <ContentPage.Resources>
+        <Color x:Key="DeleteBtnBgColor">#B20000</Color>
+        <Color x:Key="DeleteBtnFontColor">WhiteSmoke</Color>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Remove all" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <ScrollView Orientation="Vertical">
-            <ListView x:Name="lvRecord"
-                      ItemsSource="{Binding Records}"
-                      ItemTapped="LvRecord_ItemTapped">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Label Text="{Binding Title}"/>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </ScrollView>
+        <ListView x:Name="lvRecord"
+                  ItemsSource="{Binding Records}"
+                  ItemTapped="LvRecord_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <!-- Title -->
+                                <Label Text="{Binding Title}"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" 
+                                           FontAttributes="Bold"/>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <!-- Remove Bouton -->
+                                <Button x:Name="btnDelete"
+                                            CommandParameter="{Binding Id}"
+                                            Text="Delete"
+                                            TextColor="{StaticResource DeleteBtnFontColor}"
+                                            BackgroundColor="{StaticResource DeleteBtnBgColor}"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            WidthRequest="80"
+                                            HeightRequest="33"
+                                            CornerRadius="10"    
+                                            FontSize="Micro"
+                                            Clicked="BtnDelete_Clicked"/>
+                            </Grid>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>
