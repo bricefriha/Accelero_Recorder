@@ -14,96 +14,97 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout>
-                <!-- Duration -->
-                <Frame>
-                    <StackLayout>
-                        <Label Text="Duration :"
+        <StackLayout>
+            <!-- Duration -->
+            <Frame>
+                <StackLayout>
+                    <Label Text="Duration :"
                                HorizontalOptions="Center"
                                FontSize="Large" 
                                FontAttributes="Bold"/>
-                        <Label Text="{Binding Duration}"
+                    <Label Text="{Binding Duration}"
                                HorizontalOptions="Center" />
-                    </StackLayout>
-                </Frame>
-                
-                <!--Average-->
-                <Frame>
-                    <StackLayout>
-                        <!-- Label -->
-                        <Label Text="Average :"
+                </StackLayout>
+            </Frame>
+            <ScrollView>
+                <StackLayout>
+                    <!--Average-->
+                    <Frame>
+                        <StackLayout>
+                            <!-- Label -->
+                            <Label Text="Average :"
                                HorizontalOptions="Center"
                                FontSize="Medium" 
                                FontAttributes="Bold"/>
-                        <!-- Data chart -->
-                        <microcharts:ChartView x:Name="chartAvarageView"
+                            <!-- Data chart -->
+                            <microcharts:ChartView x:Name="chartAvarageView"
                                                Chart="{Binding ChartAverage}"
                                                HeightRequest="200"/>
-                    </StackLayout>
-                </Frame>
-                
-                <!--Xdata progression-->
-                <Frame>
-                    <StackLayout>
-                        <!-- Label -->
-                        <Label Text="X data progression :"
+                        </StackLayout>
+                    </Frame>
+
+                    <!--Xdata progression-->
+                    <Frame>
+                        <StackLayout>
+                            <!-- Label -->
+                            <Label Text="X data progression :"
                                HorizontalOptions="Center"
                                FontSize="Medium"
                                FontAttributes="Bold"/>
-                        
-                        <ScrollView Orientation="Horizontal">
-                            <!-- Data chart -->
-                            <microcharts:ChartView x:Name="chartXdataView" 
+
+                            <ScrollView Orientation="Horizontal">
+                                <!-- Data chart -->
+                                <microcharts:ChartView x:Name="chartXdataView" 
                                                    Chart="{Binding ChartXdata}"
                                                    HeightRequest="{StaticResource ChartDataHeight}"
                                                    WidthRequest="{Binding ChartSize}"
                                                    />
-                        </ScrollView>
-                        
-                    </StackLayout>
-                </Frame>
-                
-                <!--Ydata progression-->
-                <Frame>
-                    <StackLayout>
-                        <!-- Label -->
-                        <Label Text="Y data progression :"
+                            </ScrollView>
+
+                        </StackLayout>
+                    </Frame>
+
+                    <!--Ydata progression-->
+                    <Frame>
+                        <StackLayout>
+                            <!-- Label -->
+                            <Label Text="Y data progression :"
                                HorizontalOptions="Center"
                                FontSize="Medium"
                                FontAttributes="Bold"/>
-                        
-                        <ScrollView Orientation="Horizontal">
-                            <!-- Data chart -->
-                            <microcharts:ChartView x:Name="chartYdataView" 
+
+                            <ScrollView Orientation="Horizontal">
+                                <!-- Data chart -->
+                                <microcharts:ChartView x:Name="chartYdataView" 
                                                Chart="{Binding ChartYdata}"
                                                HeightRequest="{StaticResource ChartDataHeight}"
                                                WidthRequest="{Binding ChartSize}"/>
-                        </ScrollView>
-                        
-                    </StackLayout>
-                </Frame>
-                
-                <!--Zdata progression-->
-                <Frame>
-                    <StackLayout>
-                        <!-- Label -->
-                        <Label Text="Z data progression :"
+                            </ScrollView>
+
+                        </StackLayout>
+                    </Frame>
+
+                    <!--Zdata progression-->
+                    <Frame>
+                        <StackLayout>
+                            <!-- Label -->
+                            <Label Text="Z data progression :"
                                HorizontalOptions="Center"
                                FontSize="Medium"
                                FontAttributes="Bold"/>
-                        
-                        <ScrollView Orientation="Horizontal">
-                            <!-- Data chart -->
-                            <microcharts:ChartView x:Name="chartZdataView" 
+
+                            <ScrollView Orientation="Horizontal">
+                                <!-- Data chart -->
+                                <microcharts:ChartView x:Name="chartZdataView" 
                                                Chart="{Binding ChartZdata}"
                                                HeightRequest="{StaticResource ChartDataHeight}"
                                                WidthRequest="{Binding ChartSize}"/>
-                        </ScrollView>
-                        
-                    </StackLayout>
-                </Frame>
-            </StackLayout>
-        </ScrollView>
+                            </ScrollView>
+
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
