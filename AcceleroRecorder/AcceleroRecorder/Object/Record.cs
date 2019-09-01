@@ -28,7 +28,7 @@ namespace AcceleroRecorder.Object
         private static Stopwatch watch;
 
         // Encapse
-        public Collection<Frame> Frames { get => frames; }
+        public Collection<Frame> Frames { get => frames; set => frames = value; }
         public RecordViewModel Vm { get => vm; set => vm = value; }
         public string Title { get => title; set => title = value; }
 
@@ -69,6 +69,7 @@ namespace AcceleroRecorder.Object
 
                 // Set the attributs from  
                 this.title = myRecord.Title;
+                //this.frames = new Collection<Frame>();//myRecord.Frames;
                 this.frames = myRecord.Frames;
                 this.isRecording = myRecord.isRecording;
                 this.vm = myRecord.Vm;
