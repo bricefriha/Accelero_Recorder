@@ -121,6 +121,8 @@ namespace AcceleroRecorder.ViewModels
             Collection<Microcharts.Entry> xEntries = new Collection<Microcharts.Entry>();
             Collection<Microcharts.Entry> yEntries = new Collection<Microcharts.Entry>();
             Collection<Microcharts.Entry> zEntries = new Collection<Microcharts.Entry>();
+
+            
             // For each Frames
             foreach (Frame frame in record.Frames)
             {
@@ -166,7 +168,7 @@ namespace AcceleroRecorder.ViewModels
             int countFrames = record.Frames.Count;
 
             // Set the chart size
-            this.chartSize = countFrames * 100;
+            this.chartSize = 9000;//countFrames * coef;
 
             // Set Average value
             this.AverageFrame = new FrameItem() {
@@ -180,6 +182,25 @@ namespace AcceleroRecorder.ViewModels
 
             // Get the duration 
             this.Duration = record.Frames[lastIndex].Time;
+
+            //if (Convert.ToInt32(Duration.Split(':')[1]) < 10
+            //    && Convert.ToInt32(Duration.Split(':')[1]) > 0)
+            //{
+            //    this.chartSize = 1500;
+            //}
+            //else if (Convert.ToInt32(Duration.Split(':')[2]) < 10
+            //    && Convert.ToInt32(Duration.Split(':')[2]) > 0)
+            //{
+            //    this.chartSize = 10000;
+            //}
+            //else if (Convert.ToInt32(Duration.Split(':')[2]) > 10)
+            //{
+            //    this.chartSize = 15000;
+            //}
+            //else
+            //{
+            //    this.chartSize = 1000;
+            //}
 
             // Define the Average charts
             this.ChartAverage = new DonutChart()

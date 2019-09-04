@@ -11,6 +11,10 @@
         <ResourceDictionary>
             <!-- Constant Data Chart Height -->
             <x:Double x:Key="ChartDataHeight">200</x:Double>
+            <!-- Constant max chat width -->
+            <x:Double x:Key="MaxChartWidth">17000</x:Double>
+            <!-- Constant min chat width -->
+            <x:Double x:Key="MinChartWidth">1000</x:Double>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -53,13 +57,18 @@
                                FontAttributes="Bold"/>
 
                             <ScrollView Orientation="Horizontal">
+                                
                                 <!-- Data chart -->
                                 <microcharts:ChartView x:Name="chartXdataView" 
                                                    Chart="{Binding ChartXdata}"
                                                    HeightRequest="{StaticResource ChartDataHeight}"
-                                                   WidthRequest="{Binding ChartSize}"
-                                                   />
+                                                   WidthRequest="{Binding ChartSize}"/>
+
                             </ScrollView>
+                            <Slider Value="{Binding ChartSize}"
+                                    Maximum="{StaticResource MaxChartWidth}"
+                                    Minimum="{StaticResource MinChartWidth}"/>
+
 
                         </StackLayout>
                     </Frame>
@@ -80,6 +89,9 @@
                                                HeightRequest="{StaticResource ChartDataHeight}"
                                                WidthRequest="{Binding ChartSize}"/>
                             </ScrollView>
+                            <Slider Value="{Binding ChartSize}"
+                                    Maximum="{StaticResource MaxChartWidth}"
+                                    Minimum="{StaticResource MinChartWidth}"/>
 
                         </StackLayout>
                     </Frame>
@@ -100,6 +112,9 @@
                                                HeightRequest="{StaticResource ChartDataHeight}"
                                                WidthRequest="{Binding ChartSize}"/>
                             </ScrollView>
+                            <Slider Value="{Binding ChartSize}"
+                                    Maximum="{StaticResource MaxChartWidth}"
+                                    Minimum="{StaticResource MinChartWidth}"/>
 
                         </StackLayout>
                     </Frame>
