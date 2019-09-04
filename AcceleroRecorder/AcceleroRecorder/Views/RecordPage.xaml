@@ -36,11 +36,11 @@
                             <StackLayout HorizontalOptions="Center" 
                                          VerticalOptions="Center"
                                          Orientation="Horizontal">
-                                <Label x:Name="lblMinutes" 
+                                <!--<Label x:Name="lblMinutes" 
                                    FontSize="Large"
                                    Text="{Binding Minutes}"/>
                                 <Label Text=":"
-                                   FontSize="Large"/>
+                                   FontSize="Large"/>-->
                                 <Label x:Name="lblSecond" 
                                    FontSize="Large"
                                    Text="{Binding Seconds}"/>
@@ -110,7 +110,7 @@
                             x:Name="btnRecord"
                             WidthRequest="100"
                             HeightRequest="100"
-                            CornerRadius="100"
+                            CornerRadius="{Binding BtnCorner}"
                             Clicked="BtnRecord_Clicked"/>
                     </Frame>
                 </StackLayout>

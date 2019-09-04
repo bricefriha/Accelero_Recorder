@@ -1,13 +1,11 @@
 ﻿using AcceleroRecorder.ViewModels;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace AcceleroRecorder.Object
@@ -17,6 +15,8 @@ namespace AcceleroRecorder.Object
     /// </summary>
     public class Record
     {
+        // Set speed delay for monitoring changes.
+        private static SensorSpeed speed = SensorSpeed.UI;
         // Attributs
         private string title;
         private Collection<Frame> frames;
@@ -86,8 +86,12 @@ namespace AcceleroRecorder.Object
         /// <returns></returns>
         public void Start()
         {
-            
+            // Start the accelerometer
+            ToggleAccelerometer();
 
+            // Make the bouton Squary
+            this.vm.BtnCorner = 10;
+            
             // Change the state attribut
             this.isRecording = true;
 
@@ -95,13 +99,21 @@ namespace AcceleroRecorder.Object
             watch.Start();
 
             // Launch the timer
-            Device.StartTimer(TimeSpan.FromMilliseconds(100), () =>
+            Device.StartTimer(TimeSpan.FromMilliseconds(1), () =>
             {
                 Device.BeginInvokeOnMainThread(() =>
                 {
+                    // Update the timer
+                    this.vm.Milliseconds = watch.Elapsed.Milliseconds.ToString("000");
+                    //this.vm.Minutes = watch.Elapsed.Minutes.ToString("00");
+                    this.vm.Seconds = watch.Elapsed.Seconds.ToString("00");
 
                     //Add a frame to the frames
-                    this.frames.Add(new Frame(watch.Elapsed.Minutes.ToString("00") + ":" + watch.Elapsed.Seconds.ToString("00") + ":" + watch.Elapsed.Milliseconds.ToString("000"), this.vm.Xdata, this.vm.Ydata, this.vm.Zdata));
+                    this.frames.Add(new Frame(/*watch.Elapsed.Minutes.ToString("00") + ":" +*/ watch.Elapsed.Seconds.ToString("00") + ":" + watch.Elapsed.Milliseconds.ToString("000"), this.vm.Xdata, this.vm.Ydata, this.vm.Zdata));
+
+                    // Limited the timer at 30 seconds
+                    if (watch.Elapsed.Seconds >= 30)
+                        this.Stop();
 
                 });
                 return this.isRecording; 
@@ -113,14 +125,20 @@ namespace AcceleroRecorder.Object
         /// </summary>
         public void Stop ()
         {
+            // Stop the accelerometer
+            ToggleAccelerometer();
+
             // Change the state attribut
             this.isRecording = false;
 
-            // Stop the watch
-            watch.Stop();
-
             // Reset the watch
             watch.Reset();
+
+            // Make the bouton rounded again
+            this.vm.BtnCorner = 100;
+
+            // Save the data
+            this.Save();
         }
         /// <summary>
         /// Method to clear the Record data
@@ -134,7 +152,7 @@ namespace AcceleroRecorder.Object
         /// <summary>
         /// Method to save the record object in Json
         /// </summary>
-        public void Save()
+        private void Save()
         {
             // Ask the user to set the title
 
@@ -171,6 +189,34 @@ namespace AcceleroRecorder.Object
                 File.WriteAllText(newFileName, recordJson);
             }
 
+        }
+        /// <summary>
+        /// Method allowing to Start or Stop the accelerometer
+        /// </summary>
+        private void ToggleAccelerometer()
+        {
+            try
+            {
+                if (Accelerometer.IsMonitoring)
+                {
+                    // Stop the Accelerometer
+                    Accelerometer.Stop();
+
+                    // Clear data on the screen
+                    this.vm.ClearValuesChart();
+                }
+                else
+                    // Start the Accelerometer
+                    Accelerometer.Start(speed);
+            }
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                // Feature not supported on device
+            }
+            catch (Exception ex)
+            {
+                // Other error has occurred.
+            }
         }
     }
 }

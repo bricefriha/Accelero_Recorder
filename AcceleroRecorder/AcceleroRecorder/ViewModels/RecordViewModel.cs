@@ -16,6 +16,16 @@ namespace AcceleroRecorder.ViewModels
     /// </summary>
     public class RecordViewModel : BaseViewModel
     {
+        private double btnCorner ;
+        public double BtnCorner
+        {
+            get { return btnCorner; }
+            set
+            {
+                btnCorner = value;
+                OnPropertyChanged();
+            }
+        }
         private Stopwatch watch;
         public Stopwatch Watch
         {
@@ -108,6 +118,10 @@ namespace AcceleroRecorder.ViewModels
         }
         public RecordViewModel()
         {
+            // Set the bouton rounded
+            this.BtnCorner = 100;
+
+            // Set the title
             this.Title = "Recording";
 
             // Set accelerometers data up
@@ -200,6 +214,8 @@ namespace AcceleroRecorder.ViewModels
         public void ClearValuesChart()
         {
             const float zero = 0;
+            
+
             // Set X data
             this.Xdata = zero;
 
@@ -237,34 +253,6 @@ namespace AcceleroRecorder.ViewModels
                     },
                 }
             };
-        }
-        /// <summary>
-        /// Mothod which start the timer
-        /// </summary>
-        public void StartTimer()
-        {
-            this.watch.Start();
-
-            // Launch the timer
-            Device.StartTimer(TimeSpan.FromMilliseconds(1), () =>
-            {
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    this.Milliseconds = this.watch.Elapsed.Milliseconds.ToString("000");
-                    this.Minutes = this.watch.Elapsed.Minutes.ToString("00");
-                    this.Seconds = this.watch.Elapsed.Seconds.ToString("00");
-                });
-                return true; // True = Repeat again, False = Stop the timer
-            });
-        }
-        /// <summary>
-        /// Mothod which reset the timer
-        /// </summary>
-        public void StopTimer()
-        {
-            //watch.Stop();
-
-            this.watch.Reset();
         }
     }
 }

@@ -1,16 +1,7 @@
 ﻿using AcceleroRecorder.Object;
 using AcceleroRecorder.ViewModels;
-using Microcharts;
-using SkiaSharp;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -57,38 +48,10 @@ namespace AcceleroRecorder.Views
             // Change the style of the button
             SwitchOnOrOff((Button)sender);
 
-            // Start or Stop the accelerometer
-            ToggleAccelerometer();
+            //// Start or Stop the accelerometer
+            //ToggleAccelerometer();
 
 
-        }
-        /// <summary>
-        /// Method allowing to Start or Stop the accelerometer
-        /// </summary>
-        public void ToggleAccelerometer()
-        {
-            try
-            {
-                if (Accelerometer.IsMonitoring)
-                {
-                    // Stop the Accelerometer
-                    Accelerometer.Stop();
-
-                    // Clear data on the screen
-                    vm.ClearValuesChart();
-                }
-                else
-                    // Start the Accelerometer
-                    Accelerometer.Start(speed);
-            }
-            catch (FeatureNotSupportedException fnsEx)
-            {
-                // Feature not supported on device
-            }
-            catch (Exception ex)
-            {
-                // Other error has occurred.
-            }
         }
 
         /// <summary>
@@ -104,11 +67,6 @@ namespace AcceleroRecorder.Views
                 {
                     // If it is Off
                     case 100:
-                        // Set it On
-                        btn.CornerRadius = 10;
-
-                        // Start The timer
-                        vm.StartTimer();
 
                         // Start to recording
                         record.Start();
@@ -118,18 +76,9 @@ namespace AcceleroRecorder.Views
                     // If it is On
                     case 10:
 
-                        // Set it Off
-                        btn.CornerRadius = 100;
-
-                        // Stop the timer
-                        vm.StopTimer();
-
                         // Start to recording
                         record.Stop();
 
-                        // Save the record
-                        record.Save();
-                        
                         // Clear data
                         record.Clear();
 
