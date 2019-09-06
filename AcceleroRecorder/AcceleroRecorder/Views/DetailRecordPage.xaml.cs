@@ -13,12 +13,15 @@ namespace AcceleroRecorder.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailRecordPage : ContentPage
     {
+        string file = null;
+
         public DetailRecordPage(string filename)
         {
             InitializeComponent();
 
             // Bind the view model
             BindingContext = new DetailRecordViewModel(filename);
+            file = filename;
         }
         /// <summary>
         /// Option button behaviour
@@ -28,7 +31,7 @@ namespace AcceleroRecorder.Views
         private void BtnOption_Clicked(object sender, EventArgs e)
         {
             // Navigate to options
-            Navigation.PushAsync(new OptionPage());
+            Navigation.PushAsync(new OptionPage(file, this));
 
         }
     }
