@@ -8,6 +8,11 @@
              x:Class="AcceleroRecorder.Views.DetailRecordPage"
              Title="{Binding Title}"
              Visual="Material">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="btnOption"
+                     Clicked="BtnOption_Clicked"
+                     Text="Option"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <ResourceDictionary>
             <!-- Constant Data Chart Height -->

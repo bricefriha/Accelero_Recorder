@@ -20,5 +20,16 @@ namespace AcceleroRecorder.Views
             // Bind the view model
             BindingContext = new DetailRecordViewModel(filename);
         }
+        /// <summary>
+        /// Option button behaviour
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnOption_Clicked(object sender, EventArgs e)
+        {
+            // Navigate to options
+            Navigation.PushAsync(new OptionPage());
+
+        }
     }
 }
