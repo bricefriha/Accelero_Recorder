@@ -30,6 +30,10 @@ namespace AcceleroRecorder.Views
         /// <param name="e"></param>
         private void LvRecord_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            // Deselect the item.
+            if (sender is ListView lv)
+                lv.SelectedItem = null;
+
             // Get the list view item index
             var id = e.ItemIndex;
 

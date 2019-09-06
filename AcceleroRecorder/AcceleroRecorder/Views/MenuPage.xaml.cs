@@ -30,14 +30,21 @@ namespace AcceleroRecorder.Views
 
             ListViewMenu.ItemsSource = menuItems;
 
-            ListViewMenu.SelectedItem = menuItems[0];
+            
             ListViewMenu.ItemSelected += async (sender, e) =>
             {
+                // Deselect the item.
+                if (sender is ListView lv)
+                    lv.SelectedItem = null;
+
                 if (e.SelectedItem == null)
                     return;
 
                 var id = (int)((HomeMenuItem)e.SelectedItem).Id;
                 await RootPage.NavigateFromMenu(id);
+                
+                
+
             };
         }
 
