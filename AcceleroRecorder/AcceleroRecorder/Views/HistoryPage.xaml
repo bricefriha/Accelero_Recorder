@@ -15,6 +15,7 @@
         <ToolbarItem x:Name="btnDeleteAll"
                      Text="Delete all"
                      Clicked="BtnDeleteAll_Clicked"/>
+        
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>

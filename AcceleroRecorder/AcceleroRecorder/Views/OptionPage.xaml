@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AcceleroRecorder.Views.OptionPage"
+             Visual="Material">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:Double x:Key="EntryHeight">45</x:Double>
+            <x:Double x:Key="EntryWidth">200</x:Double>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <!-- Setup margins -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <!-- Body -->
+            <Grid Grid.Row="1">
+
+                <StackLayout HorizontalOptions="Center">
+                    <!--Rename zone -->
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Record name:" 
+                               FontSize="Body"
+                               VerticalTextAlignment="Center" />
+                        <Entry x:Name="txtName"
+                                Text="{Binding RecordName}"
+                               FontSize="Body"
+                               HeightRequest="{StaticResource EntryHeight}"
+                               WidthRequest="{StaticResource EntryWidth}"/>
+                    </StackLayout>
+                    <!--Control Zone -->
+                    <StackLayout Orientation="Horizontal"
+                                 VerticalOptions="EndAndExpand">
+                        <!-- Save button -->
+                        <Button x:Name="btnSave"
+                                Text="Apply"
+                                HorizontalOptions="EndAndExpand"
+                                Clicked="BtnSave_Clicked"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

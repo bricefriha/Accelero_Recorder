@@ -17,10 +17,12 @@ namespace AcceleroRecorder.Object
     {
         // Set speed delay for monitoring changes.
         private static SensorSpeed speed = SensorSpeed.UI;
+
         // Attributs
         private string title;
         private Collection<Frame> frames;
         private RecordViewModel vm;
+        private string filename;
         private bool isRecording;
 
         // Static var
@@ -31,6 +33,7 @@ namespace AcceleroRecorder.Object
         public Collection<Frame> Frames { get => frames; set => frames = value; }
         public RecordViewModel Vm { get => vm; set => vm = value; }
         public string Title { get => title; set => title = value; }
+        public string Filename { get => filename; set => filename = value; }
 
         /// <summary>
         /// Constructor of the Record object
@@ -43,6 +46,7 @@ namespace AcceleroRecorder.Object
             watch = new Stopwatch();
             this.isRecording = false;
             this.vm = vm;
+            this.filename = null;
         }
 
         /// <summary>
@@ -69,10 +73,11 @@ namespace AcceleroRecorder.Object
 
                 // Set the attributs from  
                 this.title = myRecord.Title;
-                //this.frames = new Collection<Frame>();//myRecord.Frames;
                 this.frames = myRecord.Frames;
                 this.isRecording = myRecord.isRecording;
                 this.vm = myRecord.Vm;
+                this.filename = recordJsonPath;
+
             }
             catch(Exception ex)
             {
@@ -164,19 +169,19 @@ namespace AcceleroRecorder.Object
             string recordJson = JsonConvert.SerializeObject(this);
 
             // Set the file name
-            string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), this.title + ".json");
+            this.filename = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), this.title + ".json");
 
             // Verify if the file dont allready exist
-            if (!File.Exists(fileName))
+            if (!File.Exists(this.filename))
             {
                 // Write the local file with the JSON with the filename specified
-                File.WriteAllText(fileName, recordJson);
+                File.WriteAllText(this.filename, recordJson);
 
             }
             else
             {
                 // Declare a new file name variable
-                string newFileName = fileName;
+                string newFileName = this.filename;
 
                 // While the newfile exist
                 for (int i = 0; File.Exists(newFileName); i++)
@@ -217,6 +222,25 @@ namespace AcceleroRecorder.Object
             {
                 // Other error has occurred.
             }
+        }
+        public void SaveData()
+        {
+            try
+            {
+                // Convert the object to JSON
+                string recordJson = JsonConvert.SerializeObject(this);
+
+                // Delete the former file
+                File.Delete(this.filename);
+
+                // Write the local file with the JSON with the filename specified
+                File.WriteAllText(this.filename, recordJson);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            
         }
     }
 }
