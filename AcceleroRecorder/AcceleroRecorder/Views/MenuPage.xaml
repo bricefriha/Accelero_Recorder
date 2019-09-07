@@ -25,6 +25,9 @@
                     <!---->
                     <!-- Put app logo here -->
                     <!---->
+                    <Image Source="MyIcon.png"
+                           HeightRequest="100"
+                           WidthRequest="100"/>
                 </Frame>
             </Grid>
             <!---->
