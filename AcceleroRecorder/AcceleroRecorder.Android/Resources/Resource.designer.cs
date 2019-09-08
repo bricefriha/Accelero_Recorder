@@ -9007,49 +9007,52 @@ namespace AcceleroRecorder.Droid
 			public const int mtrl_tabs_default_indicator = 2131165485;
 			
 			// aapt resource value: 0x7F07012E
-			public const int navigation_empty_icon = 2131165486;
+			public const int MyIcon = 2131165486;
 			
 			// aapt resource value: 0x7F07012F
-			public const int notification_action_background = 2131165487;
+			public const int navigation_empty_icon = 2131165487;
 			
 			// aapt resource value: 0x7F070130
-			public const int notification_bg = 2131165488;
+			public const int notification_action_background = 2131165488;
 			
 			// aapt resource value: 0x7F070131
-			public const int notification_bg_low = 2131165489;
+			public const int notification_bg = 2131165489;
 			
 			// aapt resource value: 0x7F070132
-			public const int notification_bg_low_normal = 2131165490;
+			public const int notification_bg_low = 2131165490;
 			
 			// aapt resource value: 0x7F070133
-			public const int notification_bg_low_pressed = 2131165491;
+			public const int notification_bg_low_normal = 2131165491;
 			
 			// aapt resource value: 0x7F070134
-			public const int notification_bg_normal = 2131165492;
+			public const int notification_bg_low_pressed = 2131165492;
 			
 			// aapt resource value: 0x7F070135
-			public const int notification_bg_normal_pressed = 2131165493;
+			public const int notification_bg_normal = 2131165493;
 			
 			// aapt resource value: 0x7F070136
-			public const int notification_icon_background = 2131165494;
+			public const int notification_bg_normal_pressed = 2131165494;
 			
 			// aapt resource value: 0x7F070137
-			public const int notification_template_icon_bg = 2131165495;
+			public const int notification_icon_background = 2131165495;
 			
 			// aapt resource value: 0x7F070138
-			public const int notification_template_icon_low_bg = 2131165496;
+			public const int notification_template_icon_bg = 2131165496;
 			
 			// aapt resource value: 0x7F070139
-			public const int notification_tile_bg = 2131165497;
+			public const int notification_template_icon_low_bg = 2131165497;
 			
 			// aapt resource value: 0x7F07013A
-			public const int notify_panel_notification_icon_bg = 2131165498;
+			public const int notification_tile_bg = 2131165498;
 			
 			// aapt resource value: 0x7F07013B
-			public const int tooltip_frame_dark = 2131165499;
+			public const int notify_panel_notification_icon_bg = 2131165499;
 			
 			// aapt resource value: 0x7F07013C
-			public const int tooltip_frame_light = 2131165500;
+			public const int tooltip_frame_dark = 2131165500;
+			
+			// aapt resource value: 0x7F07013D
+			public const int tooltip_frame_light = 2131165501;
 			
 			static Drawable()
 			{
@@ -10225,6 +10228,9 @@ namespace AcceleroRecorder.Droid
 			
 			// aapt resource value: 0x7F0C0002
 			public const int launcher_foreground = 2131492866;
+			
+			// aapt resource value: 0x7F0C0003
+			public const int MyIcon = 2131492867;
 			
 			static Mipmap()
 			{
