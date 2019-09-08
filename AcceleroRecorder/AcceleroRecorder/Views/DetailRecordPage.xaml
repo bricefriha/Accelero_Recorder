@@ -11,7 +11,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="btnOption"
                      Clicked="BtnOption_Clicked"
-                     Text="Option"/>
+                     Text="Options"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <ResourceDictionary>
