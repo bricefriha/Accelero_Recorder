@@ -19,6 +19,8 @@ namespace AcceleroRecorder.Views
 
             // Bind the view model
             BindingContext = new DetailRecordViewModel(filename);
+
+            
         }
     }
 }

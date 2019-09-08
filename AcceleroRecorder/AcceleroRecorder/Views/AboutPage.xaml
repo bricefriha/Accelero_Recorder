@@ -111,8 +111,9 @@
                     <StackLayout Orientation="Horizontal"
                                  HorizontalOptions="Center">
                         <!-- The twitter frame -->
-                        <Frame VerticalOptions="Center"
-                           Padding="10">
+                        <Frame x:Name="frameTwitter"
+                               VerticalOptions="Center"
+                               Padding="10">
                             <StackLayout Orientation="Horizontal">
 
                                 <!-- Twitter Icon-->
@@ -127,7 +128,8 @@
                             </StackLayout>
                         </Frame>
                         <!-- The twitter frame -->
-                        <Frame VerticalOptions="Center"
+                        <Frame x:Name="frameGithub"
+                               VerticalOptions="Center"
                                Padding="10">
                             <StackLayout Orientation="Horizontal">
 
@@ -144,11 +146,6 @@
                     </StackLayout>
                 </Grid>
             </Grid>
-
-            
-            
-            
-
         </Grid>
     </ContentPage.Content>
 </ContentPage>
