@@ -6,6 +6,26 @@
              mc:Ignorable="d"
              x:Class="AcceleroRecorder.App">
     <Application.Resources>
-
+        <!-- Color theme -->
+        <Color x:Key="launcher_background">#FFFFFF</Color>
+        <Color x:Key="PrimaryColor">#B20000</Color>
+        <Color x:Key="PrimaryDarkColor">#890000</Color>
+        <Color x:Key="AccentColor">#FBCC7A</Color>
+        
+        <!-- Font Awesome -->
+        <OnPlatform x:TypeArguments="x:String" x:Key="FA-Regular">
+            <On Platform="Android" Value="Font Awesome 5 Free-Regular-400.otf#Font Awesome 5 Free" />
+            <On Platform="UWP" Value="/Assets/Font Awesome 5 Free-Regular-400.otf#Font Awesome 5 Free" />
+            <On Platform="iOS" Value="Font Awesome 5 Free" />
+        </OnPlatform>
+        <OnPlatform x:TypeArguments="x:String" x:Key="FA-Brands">
+            <On Platform="Android" Value="Font Awesome 5 Brands-Regular-400.otf#Font Awesome 5 Brands Regular" />
+            <On Platform="UWP" Value="/Assets/Font Awesome 5 Brands-Regular-400.otf#Font Awesome 5 Brands" />
+        </OnPlatform>
+        <OnPlatform x:TypeArguments="x:String" x:Key="FA-Solid">
+            <On Platform="Android" Value="Font Awesome 5 Free-Solid-900.otf#Font Awesome 5 Free Solid" />
+            <On Platform="UWP" Value="Assets/Font Awesome 5 Free-Solid-900.otf#Font Awesome 5 Free" />
+            <On Platform="iOS" Value="Font Awesome 5 Free Solid" />
+        </OnPlatform>
     </Application.Resources>
 </Application>

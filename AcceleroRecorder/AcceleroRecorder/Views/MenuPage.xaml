@@ -17,7 +17,7 @@
             <!---->
             <!-- Menu header-->
             <Grid Grid.Row="0"
-                  BackgroundColor="#B20000">
+                  BackgroundColor="{StaticResource PrimaryColor}">
                 <Frame VerticalOptions="Center"
                        HorizontalOptions="Center"
                        WidthRequest="50"

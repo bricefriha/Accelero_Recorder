@@ -6,11 +6,149 @@
              mc:Ignorable="d"
              x:Class="AcceleroRecorder.Views.AboutPage"
              Title="About">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Twitter Color -->
+            <Color x:Key="BlueTwitter">#6CADDE</Color>
+            
+            <!-- GitHub Color -->
+            <Color x:Key="BlackGitHub">#24292e</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid >
+            <Grid.RowDefinitions>
+                <!-- Margin top-->
+                <!--<RowDefinition Height="10"/>-->
+                <!-- Header -->
+                <RowDefinition Height="*"/>
+                <!-- Body -->
+                <RowDefinition Height="2*"/>
+                <!-- Footer -->
+                <RowDefinition Height="*"/>
+                <!--Margin bottom -->
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+
+            <!-- Margin top-->
+            <!--<Grid Grid.Row="0" BackgroundColor="WhiteSmoke"/>-->
+            <!-- Header -->
+            <Grid Grid.Row="0" >
+                <Frame>
+                    <StackLayout>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="10"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Frame VerticalOptions="Center"
+                                       HorizontalOptions="Center"
+                                       WidthRequest="50"
+                                       HeightRequest="50">
+                                    <!-- App logo -->
+                                    <Image Source="MyIcon.png"/>
+                                </Frame>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <StackLayout>
+                                    <Label Text="AcceleroRecorder"
+                                       FontAttributes="Bold"
+                                       FontSize="Large"
+                                       HorizontalOptions="Center"/>
+                                    <Label Text="Powered by Xamarin.Forms"
+                                       HorizontalOptions="Center"
+                                       FontSize="Small"/>
+                                </StackLayout>
+                            </Grid>
+                        </Grid>
+                        
+                        
+
+                    </StackLayout>
+                </Frame>
+            </Grid>
+            <!-- Body -->
+            <Grid Grid.Row="1"
+                  BackgroundColor="WhiteSmoke">
+                <Grid.ColumnDefinitions>
+                     <!--Margin left--> 
+                    <ColumnDefinition Width="20"/>
+                     <!--Rest--> 
+                    <ColumnDefinition Width="*"/>
+                     <!--Margin right--> 
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <!--Margin Top-->
+                    <RowDefinition Height="10"/>
+                    <!--Rest-->
+                    <RowDefinition Height="*"/>
+                    <!--Margin Bottom-->
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Column="1"
+                      Grid.Row="1"
+                      >
+                    <Label HorizontalOptions="Center">
+                            This app allows the user to record all the data of his smartphone's accelerometer during an amount of time.
+                    </Label>
+                </Grid>
+                
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <!-- Margin left -->
+                    <ColumnDefinition Width="10"/>
+                    <!-- Rest -->
+                    <ColumnDefinition Width="*"/>
+                    <!-- Margin right -->
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <!-- References -->
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="Center">
+                        <!-- The twitter frame -->
+                        <Frame VerticalOptions="Center"
+                           Padding="10">
+                            <StackLayout Orientation="Horizontal">
+
+                                <!-- Twitter Icon-->
+                                <Label Text="&#xf081;" 
+                                   FontSize="Large"
+                                   TextColor="{StaticResource BlueTwitter}" 
+                                   FontFamily="{StaticResource FA-Brands}"/>
+
+                                <!-- Brice's Twitter username -->
+                                <Label Text="@BriceFriha"/>
+
+                            </StackLayout>
+                        </Frame>
+                        <!-- The twitter frame -->
+                        <Frame VerticalOptions="Center"
+                               Padding="10">
+                            <StackLayout Orientation="Horizontal">
+
+                                <!-- Github Icon-->
+                                <Label Text="&#xf092;" 
+                                   FontSize="Large"
+                                   TextColor="{StaticResource BlackGitHub}" 
+                                   FontFamily="{StaticResource FA-Brands}"/>
+
+                                <!-- Brice's Twitter username -->
+                                <Label Text="Source code"/>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+
+            
+            
+            
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
